@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from 'selenium-webdriver/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -7,4 +7,10 @@ import { HttpClient } from 'selenium-webdriver/http';
 export class MainService {
 
   constructor(private http:HttpClient) { }
+
+  saveDBDetails(data){
+    return this.http.post("/api/validate",data);
+  }
+
+  
 }
