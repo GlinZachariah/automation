@@ -2,3 +2,8 @@
     font-size: 1.2rem;
     margin-top: .2rem;
 }
+
+.db_search{
+    outline: none ;
+    box-shadow: none;
+}

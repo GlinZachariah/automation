@@ -12,5 +12,17 @@ export class MainService {
     return this.http.post("/api/validate",data);
   }
 
+  searchDBDetails(search){
+    return this.http.get("/api/search/"+search);
+  }
+
+  loadDatabasesDetails(){
+    return this.http.get('/api/jobs/getDatabases');
+  }
+
+  validateQuery(queryData){
+    return this.http.post('/api/jobs/getColumnNames',queryData);
+  }
+
   
 }

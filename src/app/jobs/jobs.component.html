@@ -1,7 +1,60 @@
 <div class="container mt-5 mb-5">
-    <h2>Jobs Details</h2>
+    <h2>Query Details</h2>
     <hr>
-    <form>
-        
+    <form [formGroup]="QueryForm" (ngSubmit)="checkQueryDetails()">
+        <div class="form-group row">
+            <div class="col-sm-2">
+                    <label for="db_dtls" class="label">DB Details</label>
+            </div>
+            <div class="col-sm-10">
+                    <select name="db_dtls" id="db_dtls" formControlName="db_dtls" class="form-control">                      
+                        <option  *ngFor="let dtl of job_dbDetails; let i = index"  [value]="dtl.db_name" >{{dtl.db_name}}</option>
+                    </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-2">
+                    <label for="job_query" class="label">SQL Query</label>
+            </div>
+            <div class="col-sm-10">
+                    <textarea type="text" class="form-control" name="job_query" id="job_query" formControlName="job_query" rows="5"></textarea>
+            </div>
+        </div>
+        <div class="alert alert-success mt-5 mb-5" *ngIf="queryFound && querySearched">
+                <strong>Query Works ! The column names found are </strong>
+                <span *ngFor="let col of columnNames">
+                    <span>{{col}},</span>
+                </span>
+        </div>
+        <div class="alert alert-danger mt-5 mb-5" *ngIf="!queryFound && querySearched">
+                <strong>Invalid Query/ Empty Data !</strong>
+        </div>
+        <button class="form-control btn btn-primary mb-5 " type="submit">
+                Validate
+        </button>
     </form>
+    <h2>Job Details</h2>
+    <hr>
+    <form [formGroup]="JobsForm" (ngSubmit)="saveJobDetails()">
+        <div class="form-group row">
+            <div class="col-sm-2">
+                    <label for="job_name" class="label">Job Name</label>
+            </div>
+            <div class="col-sm-10">
+                    <input type="text" class="form-control" name="job_name" id="job_name" formControlName="job_name">
+            </div>
+        </div>
+        <div class="form-group row">
+                <div class="col-sm-2">
+                        <label for="job_template" class="label">Job Template</label>
+                </div>
+                <div class="col-sm-10">
+                        <textarea type="text" class="form-control" name="job_template" id="job_template" formControlName="job_template" rows="10"></textarea>
+                </div>
+            </div>
+        <button class="form-control btn btn-primary mb-5 " type="submit">
+                Validate
+        </button>
+    </form>
+
 </div>

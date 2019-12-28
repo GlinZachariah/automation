@@ -1,4 +1,30 @@
 <div class="container mt-5 mb-5">
+        <div class="mb-5">
+                        <h2>Database Search</h2>
+                        <hr>
+                        <div class="form-group row ">
+                                <div class="mx-auto col-sm-10 input-group">
+                                                <input type="text" class="form-control db_search" #search (keyup.enter)="searchDBDetails(search.value)">
+                                                <span class="input-group-append">
+                                                        <button class="btn btn-default db_search" (click)="searchDBDetails(search.value)">
+                                                                <i class="fa fa-search"></i>
+                                                        </button>
+                                                </span>
+                                </div>
+                                <div class="mx-auto col-sm-10" *ngIf="db_searched && db_searchEmpty">
+                                        <div class="alert alert-danger mt-5 mb-5">
+                                                <strong>No Data Found</strong>
+                                        </div>
+                                </div>
+                                <div class="mx-auto col-sm-10" *ngIf="db_searched && !db_searchEmpty">
+                                        <div *ngFor="let data of db_searchResult;let i = index">
+                                                <label class="form-control m-0"  (click)="patchDBDetails(i)">{{data.db_name}}</label>    
+                                        </div>
+                                </div>
+                                
+                        </div>
+        </div>
+        
     <h2>Database Details</h2>
     <hr>
     <form [formGroup]="DatabaseForm" (ngSubmit)="saveDBDetails()">
@@ -8,14 +34,17 @@
                 </div>
                 <div class="col-sm-10">
                         <select name="db_dtls" id="db_dtls" formControlName="db_dtls" class="form-control">
-                            <option value="MySQL">MySQL</option>
-                            <option value="Oracle">Oracle</option>
+                            <option value="MySQL" >MySQL</option>
+                            <option value="Oracle" >Oracle</option>
                         </select>
                 </div>
         </div>
         <div class="form-group row">
                 <div class="col-sm-2">
-                        <label for="db_name" class="label">DB Name</label>
+                        <label for="db_name" class="label" *ngIf="DatabaseForm.value.db_dtls == 'Oracle' else dbName ">Connection Name</label>
+                        <ng-template #dbName>
+                                <label for="db_name" class="label">DB Name</label>
+                        </ng-template>
                 </div>
                 <div class="col-sm-10">
                         <input type="text" id="db_name" name="db_name" formControlName="db_name" class="form-control">
@@ -53,7 +82,7 @@
                         <input type="text" id="db_port" name="db_port" formControlName="db_port" class="form-control">
                 </div>
         </div>
-        <div class="form-group row">
+        <div class="form-group row" *ngIf="DatabaseForm.value.db_dtls == 'Oracle'">
                 <div class="col-sm-2">
                         <label for="db_ser" class="label">Service</label>
                 </div>
@@ -64,17 +93,26 @@
                         </select>
                 </div>
         </div>
-        <div class="form-group row">
+        <div class="form-group row" *ngIf="DatabaseForm.value.db_dtls == 'Oracle'">
                 <div class="col-sm-2">
-                        <label for="db_sid" class="label">SID</label>
+                        <label for="db_sid" class="label" *ngIf="DatabaseForm.value.db_ser == 'SID'">SID</label>
+                        <label for="db_sid" class="label" *ngIf="DatabaseForm.value.db_ser == 'Service'">Service</label>
                 </div>
                 <div class="col-sm-10">
                         <input type="text" id="db_sid" formControlName="db_sid" name="db_sid" class="form-control">
                 </div>
         </div>
+        <div class="alert alert-success mt-5 mb-5" *ngIf="db_Saved && db_Validated">
+                <strong>Saved Successfully !</strong>
+        </div>
+        <div class="alert alert-danger mt-5 mb-5" *ngIf="!db_Saved && db_Validated">
+                <strong>Connection / Data Error !</strong>
+        </div>
         <button class="form-control btn btn-primary " type="submit">
             Validate
         </button>
+
+        
         
     </form>
 </div>
