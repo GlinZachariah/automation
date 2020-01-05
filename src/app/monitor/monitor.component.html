@@ -1,0 +1,33 @@
+<div class="container mt-5 mb-5">
+    <h2>Job Monitor</h2>
+
+    <table class="table table-striped mt-3">
+        <thead>
+            <th scope="col">Job Name</th>
+            <th scope="col">Status</th>
+            <th scope="col">Start</th>
+            <th scope="col">Pause</th>
+            <th scope="col">Stop</th>
+            <th scope="col">Last Executed</th>
+            <th scope="col">Next Executed</th>
+        </thead>
+        <tbody class="">
+            <tr ngFor="let data of JobList;let i = index;">
+                <td scope="row"></td>
+                <td scope="row"></td>
+                <td scope="row">
+                    <button class="btn btn-success" >Start</button>
+                </td>
+                <td scope="row">
+                    <button class="btn btn-warning" >Pause</button>
+                </td>
+                <td scope="row">
+                    <button class="btn btn-danger" >Stop</button>
+                </td>
+                
+                <td scope="row"></td>
+                <td scope="row"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

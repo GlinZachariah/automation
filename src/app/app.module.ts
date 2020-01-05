@@ -7,12 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { JobsComponent } from './jobs/jobs.component';
 import { DatabasesComponent } from './databases/databases.component';
+import { MonitorComponent } from './monitor/monitor.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     JobsComponent,
     DatabasesComponent,
+    MonitorComponent,
   ],
   imports: [
     BrowserModule,

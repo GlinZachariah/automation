@@ -17,3 +17,12 @@ export interface Result{
     dbName:string;
     queryString:string;
   }
+
+
+  export interface JobDetailModel{
+    jobName:string;
+	  Status:string;
+	  jobKey:string;
+    lastExecuted:string;
+    nextExecuted:string;
+  }
