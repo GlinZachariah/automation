@@ -1,8 +1,6 @@
 # Mail Automation Tool
 
-![In Progress](https://img.shields.io/badge/status-In%20Progress-yellow)
-
- ![Angular](https://img.shields.io/badge/Front%20End-Angular-red)  ![Spring](https://img.shields.io/badge/Middleware-SpringBoot-green)  ![MySQL](https://img.shields.io/badge/Back%20End-MySQL-blue)
+![In Progress](https://img.shields.io/badge/status-In%20Progress-yellow)  ![Angular](https://img.shields.io/badge/Front%20End-Angular-red)  
 
 ### Description
 
